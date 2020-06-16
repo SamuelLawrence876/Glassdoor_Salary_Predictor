@@ -1,0 +1,213 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from matplotlib.pyplot import figure
+from wordcloud import WordCloud, ImageColorGenerator, STOPWORDS
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+df = pd.read_csv('Financial_Analyst.csv')  # Reading the CSV for Fincaial Analysis data
+df.head() # call in the data to make sure its correct
+
+df = df.drop(['Unnamed: 0'], axis = 1) #dropping 0's column
+
+df = df[df['Salary Estimate'] != '-1'] #Drop -1 values
+
+df['Salary_Data'] = df['Salary Estimate'].apply(lambda x: x.split('(')[0]) #Cleaning sallary Data
+
+df['Salary_Data'] = df['Salary_Data'].apply(lambda x: x.replace('K','000').replace('£','')) #Removing symbolls 
+
+df['Max_Salary'] = df['Salary_Data'].apply(lambda x: int(x.split('-')[0])) #Adding Max Salary Column
+
+df['Min_Salary'] = df['Salary_Data'].apply(lambda x: int(x.split('-')[1])) #Adding Min Salary Column
+
+df['Average_Salary'] = (df.Max_Salary+df.Min_Salary)/2 #Adding Average Salary Column
+
+df['Company Name'] = df['Company Name'].apply(lambda x: x.split('\n')[0]) #Cleaning Company name
+
+df.head() # Ensure our new columns are present 
+
+###### Average Salary of all positions
+
+df.Average_Salary.mean()
+
+#### Having cleaned our data we can now look at some statistics:
+##### industry's Hiring:
+
+df.Industry.value_counts()[:20] 
+
+###### Company age
+
+df['Age of the company in years'] = df.Founded.apply(lambda x: x if x <1 else 2020 - x)
+df['Age of the company in years'].value_counts()[:10]
+
+###### The amount of jobs that ask for AWS
+
+df['AWS'] = df['Job Description'].apply(lambda x: 1 if 'AWS' in x else 0)
+df.AWS.value_counts()
+
+###### The amount of jobs that mention modeling in the description
+
+df['Modeling'] = df['Job Description'].apply(lambda x: 1 if 'modeling' in x else 0)
+df.Modeling.value_counts()
+
+###### The amount of jobs that mention Equity in the description
+
+df['Equity'] = df['Job Description'].apply(lambda x: 1 if 'equity' in x else 0)
+df.Equity.value_counts()
+
+###### The amount of jobs that mention SQL in the description
+
+df['SQL'] = df['Job Description'].apply(lambda x: 1 if 'SQL' in x else 0)
+df.SQL.value_counts()
+
+###### The amount of jobs that mention Fintech in the description
+
+df['Fintech'] = df['Job Description'].apply(lambda x: 1 if 'Fintech' in x else 0)
+df.Fintech.value_counts()
+
+###### The amount of jobs that mention Python in the description
+
+df['Python'] = df['Job Description'].apply(lambda x: 1 if 'python' in x else 0)
+df.Python.value_counts()
+
+###### The amount of jobs that Risk modeling in the description
+
+df['Risk'] = df['Job Description'].apply(lambda x: 1 if 'risk' in x else 0)
+df['Risk'].value_counts()
+
+###### The amount of jobs that mention Consulting in the description
+
+df['Consulting'] = df['Job Description'].apply(lambda x: 1 if 'consulting' in x else 0)
+df.Consulting.value_counts()
+
+###### The amount of jobs that mention Excel in the description
+
+df['Excel'] = df['Job Description'].apply(lambda x: 1 if 'Excel' in x else 0)
+df.Excel.value_counts()
+
+def type_of_analyst(job):
+    if 'invetement' in job.lower():
+        return 'invetement analyst'
+    if 'stratergy' in job.lower():
+        return 'stratergy analyst'    
+    if 'financial' in job.lower():
+        return 'financial analyst'    
+    if 'credit' in job.lower():
+        return 'credit analyst'
+    if 'quantitative' in job.lower():
+        return 'quantitative analyst'
+    if 'business analyst' in job.lower():
+        return 'business analyst'
+    if 'risk' in job.lower():
+        return 'risk analyst'
+    if 'fp&a' in job.lower():
+        return 'fp&a'
+    if 'equity' in job.lower():
+        return 'equity analyst'
+    if 'compliance' in job.lower():
+        return 'compliance analyst'
+    if 'estate' in job.lower():
+        return 'real estate analyst'
+    else: 
+        return 'Other Analyst'
+    
+def seniority_status(job):
+    if 'senior' in job.lower() or 'sr.' in job.lower() or 'sr' in job.lower() or 'lead' in job.lower() or 'head' in job.lower():
+        return 'Senior Status'
+    elif 'jr' in job.lower() or 'junior' in job.lower() or 'jr.' in job.lower():
+        return 'Junior Status'
+    if 'vp' in job.lower() or 'vice president' in job.lower():
+        return 'Vice President'
+    else: 
+        return 'Unspesified Title'
+    
+
+df['Type'] = df['Job Title'].apply(type_of_analyst)
+
+###### Types of analysts that are being hired 
+
+df.Type.value_counts()
+
+df['Seniority_Status'] = df['Job Title'].apply(seniority_status)
+
+###### Seniority of analysts
+
+df.Seniority_Status.value_counts()
+
+##### Most Job Posting locations
+
+df['Location'].value_counts()[:10]
+
+##### Biggest competitors
+
+df['Competitors'].value_counts()[:15]
+
+df['Number of Competitors '] = df['Competitors'].apply(lambda x: len(x.split(',')) if x != -1 else 0)
+
+
+##### Number of competitors firms reported 
+
+df['Number of Competitors '].value_counts()
+
+##### Rating Histogram
+
+df.Rating.hist()
+
+###### Average Salary estimated by glassdoor
+
+df.Average_Salary.hist()
+
+##### Correlation between Ratings, Salary, Founded date
+
+df_cor = df[['Rating','Average_Salary','Founded']].corr() 
+df_cor.head()
+
+#### Heatmap
+
+sns.heatmap(df_cor.corr(), annot = True, vmin=-1, vmax=1, center= 0, cmap= 'coolwarm')
+
+##### Categorical  Charts 
+
+df_cat = df[['Location','Size','Type of ownership','Revenue','Industry','Sector','Type','Seniority_Status']] #Charts we're creating
+
+for Categorical_Values in df_cat.columns:
+    cat_num = df_cat[Categorical_Values].value_counts()
+    print('graph for %s: total = %d' % (Categorical_Values, len(cat_num)))
+    chart = sns.barplot(x=cat_num.index, y=cat_num)
+    chart.set_xticklabels(chart.get_xticklabels(), rotation=90)
+    plt.show()
+
+##### Pivot Table
+
+pd.pivot_table(df, index = ['Type','Seniority_Status'], values = 'Average_Salary').sort_values('Average_Salary', ascending = False)
+
+##### WordCloud 
+
+words = " ".join(df['Job Description'])
+
+def punctuation_stop(text):
+    """remove punctuation and stop words"""
+    filtered = []
+    stop_words = set(stopwords.words('english'))
+    word_tokens = word_tokenize(text)
+    for w in word_tokens:
+        if w not in stop_words and w.isalpha():
+            filtered.append(w.lower())
+    return filtered
+
+words_filtered = punctuation_stop(words)
+unwanted = ['the', 'role','support','skills ability', 'including']
+text = " ".join([ele for ele in words_filtered if ele not in unwanted])
+wc= WordCloud(background_color="gray", random_state=1,stopwords=STOPWORDS, max_words = 500, width =2000, height = 2000)
+wc.generate(text)
+plt.figure(figsize=[10,10])
+plt.imshow(wc, interpolation="bilinear")
+plt.axis('off')
+plt.show()
+
+df.to_csv('Clean ML Data.csv') #Saving as CSV
+
+
+
