@@ -1,0 +1,45 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, cross_val_score
+import statsmodels.api as sm
+from sklearn.linear_model import LinearRegression, Lasso
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestRegressor
+import pickle
+from sklearn.metrics import mean_absolute_error
+# not done
+# Gradient boosted Tree
+# Support Vector Regression
+
+df = pd.read_csv('Clean ML Data.csv')  # Reading the CSV for financial Analysis data
+
+print(df.columns)
+
+# Data that is being used in model to (X,Y axis)
+Df_Comparable_Data = df[['Rating', 'Size', 'Age of the company in years', 'Industry', 'Sector', 'Revenue',
+                         'Type '
+                         'of '
+                         'ownership', 'Risk', 'SQL', 'Excel', 'Python', 'Seniority_Status', 'Average_Salary']]
+
+df_dum = pd.get_dummies(Df_Comparable_Data)  # Creating Dummy columns
+
+X = df_dum.drop("Average_Salary", axis=1)
+y = df_dum.Average_Salary.values
+X_train, X_Test, y_train, Y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+### Multiple Linear Regression ###  - stats model
+
+x_sm = X = sm.add_constant(X)
+model = sm.OLS(y, x_sm)
+print(model.fit().summary())
+
+lm = LinearRegression()
+lm.fit(X_train, y_train)
+
+np.mean(cross_val_score(lm, X_train, y_train, scoring='neg_mean_absolute_error', cv=3))
+
+# lasso regression
+lm_l = Lasso(alpha=.13)
+lm_l.fit(X_train, y_train)
+np.mean(cross_val_score(lm_l, X_train, y_train, scoring='neg_mean_absolute_error', cv=3))
