@@ -193,3 +193,5 @@ def get_jobs(keyword, num_jobs, verbose):
 path = 'C:\Program Files (x86)'
 df = get_jobs('Financial Analyst', 5, False)
 df.to_csv('Fin.csv')
+
+'''Credit to Omer Skarya for part of the base code'''
