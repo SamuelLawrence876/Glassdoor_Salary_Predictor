@@ -17,7 +17,7 @@ The objective of this project is to further understand what it takes to be a fin
 * Machine Learning
 * Data Visualization
 * Predictive Modeling
-* etc.
+* etc
 
 ### Technologies
 * Python
