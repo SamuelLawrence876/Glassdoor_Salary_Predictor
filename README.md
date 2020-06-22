@@ -45,7 +45,7 @@ As we move closer to the full cycle of graduates moving into the work force, the
 
 * The data was gathered from Glassdoor job postings on 6/7/2020 via web scraper with the use of the Selenium Python library. As such, COVID-19  has remained a constant factor in our lives and should be taken into consideration.
 * -1 represents data that wasn't specified in the job posting
-* The sample size for this data set was 1,000 entries
+* The sample size for this data set was 1,000 entries.
 
 ## Needs of this project
 
