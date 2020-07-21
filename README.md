@@ -47,14 +47,10 @@ As we move closer to the full cycle of graduates moving into the work force, the
 * -1 represents data that wasn't specified in the job posting
 * The sample size for this data set was 1,000 entries.
 
-## Needs of this project
+## Key findings
+Some of the most common words mentioned in the analysis include: 'Problem Solving','Bachelor Degree','team' and 'attention to detail'
 
-- frontend developers
-- data exploration/descriptive statistics
-- data processing/cleaning
-- statistical modeling
-- writeup/reporting
-- Machine Learning implementation  
+
 
 
 ## Contributing  Members
