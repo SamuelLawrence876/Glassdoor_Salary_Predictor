@@ -5,7 +5,7 @@
 - [x] Clean data for analysis
 - [x] Analyze data
 - [x] submit findings
-- [ ] Scale and Build Machine Learning Model
+- [x] Scale and Build Machine Learning Model
 - [ ] Construct API
 - [ ] Host API using flask
 
@@ -30,6 +30,7 @@ The objective of this project is to further understand what it takes to be a fin
 * Sklean
 * Statsmodels
 * Selenium
+* Sklearn
 
 ## Project Description
 As we move closer to the full cycle of graduates moving into the work force, the question has been posed is what does it take/what is it like to be a financial analyst? Some questions we plan on answering include:
