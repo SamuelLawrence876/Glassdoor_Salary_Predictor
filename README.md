@@ -55,3 +55,5 @@ Some of the most common words mentioned in the analysis include: 'Problem Solvin
 ## Contributing  Members
 
 **Team Leads (Contacts) : [Samuel Lawrence]: https://www.linkedin.com/in/samuel-lawrence-a29977b5/**
+- Webscraper adapted from https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905
+- Insperation for the project was from Ken Jee
