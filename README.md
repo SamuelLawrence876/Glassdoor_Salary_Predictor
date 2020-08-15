@@ -46,9 +46,12 @@ As we move closer to the full cycle of graduates moving into the work force, the
 * The data was gathered from Glassdoor job postings on 6/7/2020 via web scraper with the use of the Selenium Python library. As such, COVID-19  has remained a constant factor in our lives and should be taken into consideration.
 * -1 represents data that wasn't specified in the job posting
 * The sample size for this data set was 1,000 entries.
+* We ran the web scraper multiple times to get a wider pool of data due to the number of missing data
 
 ## Key findings
-Some of the most common words mentioned in the analysis include: 'Problem Solving','Bachelor Degree','team' and 'attention to detail'
+- Some of the most common words mentioned in the analysis include: 'Problem Solving','Bachelor Degree','team' and 'attention to detail'
+- Average salary came out to around 30K depending on the senority level
+- Most big corperations are doing the hiring at the moment
 
 
 
