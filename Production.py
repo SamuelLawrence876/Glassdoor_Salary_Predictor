@@ -1,18 +1,15 @@
 import streamlit as st
 import pandas as pd
-import pandas as pd
-import numpy as np
-import warnings
-from PIL import Image
 
-warnings.filterwarnings("ignore")
 
 # Title
 st.title('Glassdoor Prediction model')
-st.subheader('Below is the prediction based on data scraped via Glassdoor')
+st.subheader('The objective of this project was to further understand what it takes to be a financial analyst in London.'
+             ' This exercise will serve as a gateway to those seeking to become analyst themselves as well as create an '
+             'entry point adapting a machine learning model in predicting what role may be expected in relation to the different variables.')
 # sidebar:
 
-st.sidebar.header('User Input Parameters')
+st.sidebar.markdown('**User Input Parameters**')
 
 
 def user_input_features():
@@ -29,7 +26,7 @@ def user_input_features():
          '501 to 1000 employees', '5001 to 10000 employees', 'Unknown')
     )
     Age = st.sidebar.selectbox(
-        'Whats the company age',
+        'How old is the company?',
         ('10.0', '101.0', '104.0', '107.0', '11.0', '114.0', '12.0',
          '122.0', '13.0', '132.0', '134.0', '14.0', '142.0', '149.0',
          '150.0', '151.0', '16.0', '164.0', '17.0', '170.0', '182.0',
@@ -39,7 +36,7 @@ def user_input_features():
          '75.0', '77.0', '83.0', '85.0', '91.0', '92.0')
     )
     Industry = st.sidebar.selectbox(
-        'What Industry is the company?',
+        'What Industry is the company working in?',
         ('Accounting', 'Advertising & Marketing', 'Aerospace & Defence',
          'Banks & Building Societies', 'Biotech & Pharmaceuticals',
          'Brokerage Services', 'Computer Hardware & Software', 'Consulting',
@@ -54,7 +51,7 @@ def user_input_features():
          'Publishing', 'Real Estate', 'Staffing & Outsourcing', 'Unsure')
     )
     Sector = st.sidebar.selectbox(
-        'What Sector is the company in?',
+        'What Sector is the company operating in?',
         ('Accounting & Legal', 'Aerospace & Defence',
          'Biotech & Pharmaceuticals', 'Business Services', 'Finance',
          'Information Technology', 'Insurance', 'Manufacturing', 'Media',
@@ -81,7 +78,7 @@ def user_input_features():
         ('Junior Status', 'Senior Status', 'Vice President')
     )
     Type = st.sidebar.selectbox(
-        'What type of analyst role is the job?',
+        'What is the jon title?',
         ('Operations analyst', 'Underwriting Analyst',
          'Unspesified Analyst', 'business analyst', 'compliance analyst',
          'credit analyst', 'data analyst', 'equity analyst',
@@ -197,24 +194,18 @@ st.title(pipe.predict(df)[0])
 st.header('Information about the data: ')
 st.write('This model was trained on 500 data points, as such salary variation may be limited')
 
-iny = Image.open('Assets\Industry.png')
+
 st.subheader('The following graphs give an insight into what the data is made up of')
-st.image(iny, caption='The distribution of Industries where the data is from',
+st.image('Assets/Industry.png', caption='The distribution of Industries where the data is from',
          use_column_width=True)
 
-iny = Image.open('Assets\Revenue.png')
-#st.subheader('The following graphs give an insight into what the data is made up of')
-st.image(iny, caption='The distribution of Company Revenue data',
+st.image('Assets/Revenue.png', caption='The distribution of Company Revenue data',
          use_column_width=True)
 
-iny = Image.open('Assets\Sector.png')
-#st.subheader('The following graphs give an insight into what the data is made up of')
-st.image(iny, caption='The distribution of Sectors where the data is from',
+st.image('Assets/Sector.png', caption='The distribution of Sectors where the data is from',
          use_column_width=True)
 
-iny = Image.open('Assets\Analyst Roles.png')
-#st.subheader('The following graphs give an insight into what the data is made up of')
-st.image(iny, caption='The distribution of the various roles where the data is from',
+st.image('Assets/Analyst Roles.png', caption='The distribution of the various roles where the data is from',
          use_column_width=True)
 st.subheader('Key Findings:')
 st.text("Some of the most common words mentioned in the analysis include: 'Problem Solving','Bachelor Degree','team' and 'attention to detail")
