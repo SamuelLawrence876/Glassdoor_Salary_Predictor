@@ -1,13 +1,26 @@
 # **Glassdoor Salary exploration for financial analyst positions in the UK**
-#### -- Project Status: [Active]
+
+## Contributing  Members
+
+**Team Leads (Contacts) : [Samuel Lawrence]: https://www.linkedin.com/in/samuel-lawrence-a29977b5/**
+
+Webscraper adapted from https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905
+
+Inspiration for the project was based on Ken Jee's youtube series 'data science project from scratch'
+Major changes include:
+* Unique model building apprach based on sklearn ensemble library
+* The model was deployed to production via streamlit on heroku url: https://glassdoor-fin-analyst.herokuapp.com/
+* Updated webcrawler was in need of overall due to glassdoor's updated website 
+* Unique EDA
+
+#### -- Project Status: [Complete]
 #### Project phases:
 - [x] Adapt web scraper for data for model
 - [x] Clean data for analysis
 - [x] Analyze data
-- [x] submit findings
+- [x] Submit findings
 - [x] Scale and Build Machine Learning Model
-- [ ] Construct API
-- [ ] Host API using flask
+- [x] Host product on heroku
 
 ## Project Intro
 The objective of this project is to further understand what it takes to be a financial analyst in London. This exercise will serve as a gateway to those seeking to become analyst themselves as well as create an entry point adapting a machine learning model in predicting what role may be expected in relation to the different variables. 
@@ -55,8 +68,4 @@ As we move closer to the full cycle of graduates moving into the work force, the
 
 
 
-## Contributing  Members
 
-**Team Leads (Contacts) : [Samuel Lawrence]: https://www.linkedin.com/in/samuel-lawrence-a29977b5/**
-- Webscraper adapted from https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905
-- Insperation for the project was from Ken Jee
