@@ -2,7 +2,7 @@
 
 ## Contributing  Members
 
-####Team Leads (Contacts) : [Samuel Lawrence]: http://samuel-lawrence.co.uk/
+#### Team Leads (Contacts) : [Samuel Lawrence]: http://samuel-lawrence.co.uk/
 
 Webscraper adapted from https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905
 
