@@ -8,10 +8,10 @@ Webscraper adapted from https://towardsdatascience.com/selenium-tutorial-scrapin
 
 Inspiration for the project was based on Ken Jee's youtube series 'data science project from scratch'
 Major changes include:
-* Unique model building apprach based on sklearn ensemble library
+* Unique model building apprach based on sklearn ensemble module
 * The model was deployed to production via streamlit on heroku url: https://glassdoor-fin-analyst.herokuapp.com/
 * Updated webcrawler was in need of overall due to glassdoor's updated website 
-* Unique EDA
+* Unique field objective
 
 #### -- Project Status: [Complete]
 #### Project phases:
@@ -33,14 +33,13 @@ The objective of this project is to further understand what it takes to be a fin
 
 ### Technologies
 * Python
-* Pandas, jupyter
+* Pandas
 * Numpy
 * Matplotlib
 * Nltk
 * Wordcloud 
 * Seaborn 
 * Sklean
-* Statsmodels
 * Selenium
 * Sklearn
 
