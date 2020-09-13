@@ -8,7 +8,7 @@ Webscraper adapted from https://towardsdatascience.com/selenium-tutorial-scrapin
 
 Inspiration for the project was based on Ken Jee's youtube series 'data science project from scratch'
 Major changes include:
-* Unique model building apprach based on sklearn ensemble module
+* Unique model building approach based on sklearn ensemble module
 * The model was deployed to production via streamlit on heroku url: https://glassdoor-fin-analyst.herokuapp.com/
 * Updated webcrawler was in need of overall due to glassdoor's updated website 
 * Unique field objective
@@ -62,8 +62,11 @@ As we move closer to the full cycle of graduates moving into the work force, the
 
 ## Key findings
 - Some of the most common words mentioned in the analysis include: 'Problem Solving','Bachelor Degree','team' and 'attention to detail'
-- Average salary came out to around 30K depending on the senority level
-- Most big corperations are doing the hiring at the moment
+- Average salary came out to around 30K depending on the seniority level
+- Most big corporations are doing the hiring at the moment
+
+## Use Case
+- With more data and better feature selection, users could calculate their exact salary 
 
 
 
